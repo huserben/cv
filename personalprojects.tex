@@ -1,0 +1,150 @@
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\langen{\cvsection{Personal Projects}}
+\langde{\cvsection{Persönliche Projekte}}
+
+\begin{cvparagraph}
+	\langen{
+		This is an excerpt of projects I currently maintain on Github. Some of them are in active development, while others were just some prototypes or Proof of Concepts. \newline
+	}
+	\langde{Folgend einige persönliche Projekte die auf Github verfügbar sind. Manche sind in aktiver Entwicklung, andere sind Prototypen oder Proof of Concepts. \newline}
+\end{cvparagraph}
+
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {
+    	\href{https://github.com/huserben/TfsExtensions}{github.com/huserben/TfsExtensions} //
+    	\langen{
+    	 \href{https://marketplace.visualstudio.com/items?itemName=benjhuser.tfs-extensions-build-tasks}{Trigger Build Task on Azure DevOps Marketplace}}
+     	\langde{
+     		\href{https://marketplace.visualstudio.com/items?itemName=benjhuser.tfs-extensions-build-tasks}{Trigger Build Task im Azure DevOps Marketplace}}
+    } % Link
+    {
+    	\langen{Trigger Build Tasks}
+    	\langde{Trigger Build Tasks}
+    } % Repistory/Project Name
+    {
+    	\langen{Maintainer}
+    	\langde{Maintainer}
+    } % Role
+    {
+    	\langen{Active Development}
+    	\langde{Aktive Entwicklung}
+    } % Date(s)
+    {  	
+      \begin{cvitems} % Description(s) of experience/contributions/knowledge
+        \item {
+        	\langen{Extension available for Azure DevOps Pipelines und TFS to Queue Builds from within other Builds, including extra functionality like awaiting completion of Builds etc.}
+        	\langde{Erweiterung verfügbar für Azure DevOps Pipelines und TFS um Builds von einem laufenden Build anzustossen, inklusive Zusatzfunktionalität wie das abwarten eines laufenden Builds etc.}
+        }
+        \item {
+        	\langen{Used Technologies: PowerShell, Node.js, npm, TypeScript, Azure DevOps REST API}
+        	\langde{Verwendete Technologien: PowerShell, Node.js, npm, TypeScript, Azure DevOps REST API}
+        }
+        \item {
+        	\langen{Over 4000 Installs of the Extension, over 100 Issues logged on Github (95+ closed), more than 150 commits}
+        	\langde{Mehr als 4000 Installationen der Erweiterung, über 100 geloggte Issues auf Github (mehr als 95 gelöst), insgesamt mehr als 150 Commits}
+        }
+      \end{cvitems}
+    }
+
+	\cventry
+	{
+		\href{https://github.com/huserben/PerformanceTestVisualizer}{github.com/huserben/PerformanceTestVisualizer} //
+		\langen{\href{https://marketplace.visualstudio.com/items?itemName=benjhuser.test-run-performance-analyzer&targetId=12d83491-05ec-4d25-9701-6ee9a0e83256&utm_source=vstsproduct&utm_medium=ExtHubManageList}{Testrun Performance Analyzer on Azure DevOps Marketplace}}
+		\langde{\href{https://marketplace.visualstudio.com/items?itemName=benjhuser.test-run-performance-analyzer&targetId=12d83491-05ec-4d25-9701-6ee9a0e83256&utm_source=vstsproduct&utm_medium=ExtHubManageList}{Testrun Performance Analyzer im Azure DevOps Marketplace}}
+	} % Link
+	{Performance Test Visualizer} % Repistory/Project Name
+	{
+		\langen{Maintainer}
+		\langde{Maintainer}
+	} % Role
+	{
+		\langen{Maintenance}
+		\langde{Wartung}
+	} % Date(s)
+	{  	
+		\begin{cvitems} % Description(s) of experience/contributions/knowledge
+			\item {
+				\langen{Extension available for Azure DevOps Pipelines and TFS to fetch the run duration of all tests over the course of a certain amount of days and organizes them in a csv file}
+				\langde{Erweiterung verfügbar für Azure DevOps Pipelines und TFS um die Laufzeiten bestimmter Testruns über eine gewisse Dauer auszulesen und in einer CSV Datei zu speichern}
+			}
+			\item {
+				\langen{Furthermore a set of scripts is included in the github repository to create an html page with charts for each specific test. This can be used to continously monitor performance and get a trend on how it develops.}
+				\langde{Zusätzlich im Repository verfügbar ist eine Reihe von Scripts welche eine HTML Seite mit Diagrammen für jeden Test erstellt. Dies kann verwendet werden um kontinuierlich die Performance zu überwachen und eine Tendenz über längere Zeit festzustellen bzw. Performance Probleme frühzeitig zu erkennen.}
+			}
+			\item {
+				\langen{Used Technologies: Node.js, npm, TypeScript, Azure DevOps REST API, Python, pandas, matplotlib}
+				\langde{Verwendete Technologien: Node.js, npm, TypeScript, Azure DevOps REST API, Python, pandas, matplotlib}
+			}
+		\end{cvitems}
+	}
+
+	\cventry
+	{
+		\href{https://github.com/huserben/Shambo}{github.com/huserben/Shambo} // \href{https://github.com/huserben/ChatbotDemo}{github.com/huserben/ChatbotDemo}
+	} % Link
+	{
+		\langen{Chatbots with Microsoft Bot Framework}
+		\langde{Chatbos mit Microsoft Bot Framework}
+	} % Repistory/Project Name
+	{
+		\langen{Maintainer}
+		\langde{Maintainer}
+	} % Role
+	{
+		\langen{Tech Demo/Presentation}
+		\langde{Tech Demo/Präsentation}
+	} % Date(s)
+	{  	
+	\begin{cvitems} % Description(s) of experience/contributions/knowledge
+		\item {
+			\langen{Chatbot based on the Microsoft Bot Framework that interacts with Azure DevOps Builds to fetch information about Build Status and the capability to send notifications in case a Build fails. It is written in C\# and uses the Language Understanding Intelligent Service (LUIS) of the Azure Cognitive Service Suite to correctly interpret text.}
+			\langde{Chatbot basierend auf dem Microsoft Bot Framework der mit Azure DevOps Builds interagiert um Informationen zum Build Status auszulesen sowie in der lage ist Benachritigungen zu versenden sofern ein Build fehlschlägt. Der Bot ist geschriben in C\# und verwendet den Language Understanding Intelligent Service (LUIS) aus der Azure Cognitive Service Suite um Text korrekt zu interpretieren.}
+		}	
+		\item {
+			\langen{After successfully creating a Bot and using the Bot Framework together with LUIS, a Presentation and hands-on coding session was held. Code Snippets as well as the Presentation that was created with Microsoft Sway can be found in another repository: \href{https://github.com/huserben/ChatbotDemo}{github.com/huserben/ChatbotDemo}}
+			\langde{Nach erfolgreichem erstellen des Bots mittels Bot Framework und LUIS wurde eine Präsentation inklusive Hand-On Coding Session gehalten. Code Beispiele sowie mit Microsoft Sway erstellter Präsentation können in einem eigenen Repository gefunden werden: \href{https://github.com/huserben/ChatbotDemo}{github.com/huserben/ChatbotDemo}}
+		}
+		\item {
+			\langen{Used Technologies: C\#, Microsoft Bot Framework, Azure Cognitive Services, LUIS, Microsoft Sway}
+			\langde{Verwendete Technologien: C\#, Microsoft Bot Framework, Azure Cognitive Services, LUIS, Microsoft Sway}
+		}
+	\end{cvitems}
+	}
+
+	\cventry
+		{
+		\href{https://github.com/huserben/VersionAnalyzer}{github.com/huserben/VersionAnalyzer}
+	} % Link
+	{VersionAnalyzer} % Repistory/Project Name
+		{
+		\langen{Maintainer}
+		\langde{Maintainer}
+	} % Role
+		{
+		\langen{Tech Demo/Presentation}
+		\langde{Tech Demo/Präsentation}
+	} % Date(s)
+	{  	
+	\begin{cvitems} % Description(s) of experience/contributions/knowledge
+	\item {
+		\langen{A Roslyn Code Analyzer that detects when a \textit{Version} object is created but not initialized with all four digits}
+		\langde{Roslyn Code Analyzer der eine Warnung ausgibt sobald ein \textit{Version} Objekt erstellt aber nicht mit allen 4 Versionssegmenten initialisiert wurde}
+	}
+	\item {
+		\langen{After completion of the Demo a Presentation about the Topic was held. The presentation itself is part of the repository.}
+		\langde{Nach Beendigung der Demo wurde eine Presentation über die Thematik gehalten. Die Präsentation selbst ist Teil des Repositories.}
+	}
+	\item {
+		\langen{Used Technologies: C\#, Roslyn, C\# Compiler Platform}
+		\langde{Verwendete Technologien: C\#, Roslyn, C\# Compiler Platform}
+	}
+	\end{cvitems}
+	}
+
+%---------------------------------------------------------
+\end{cventries}

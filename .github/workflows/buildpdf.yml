@@ -20,7 +20,8 @@ jobs:
 
       - name: Compile English version
         run: |
-          xelatex -synctex=1 -interaction=nonstopmode "cv.tex"
+          xelatex -synctex=1 -interaction=nonstopmode "cv_english.tex"
+          xelatex -synctex=1 -interaction=nonstopmode "cv_german.tex"
 
       - name: Setup GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -32,7 +33,8 @@ jobs:
       - name: Copy PDFs
         run: |
           mkdir -p output
-          mv cv.pdf output/
+          mv cv_english.pdf output/
+          mv cv_german.pdf output/
 
       - name: Deploy PDFs
         uses: peaceiris/actions-gh-pages@v3

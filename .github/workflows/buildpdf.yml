@@ -18,10 +18,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-full
 
+      - name: Create tag if necessary
+        id: version
+        uses: fregante/daily-version-action@v2
+        with:
+          prefix: v
+
       - name: Compile English version
         run: |
-          xelatex -synctex=1 -interaction=nonstopmode "cv_english.tex"
-          xelatex -synctex=1 -interaction=nonstopmode "cv_german.tex"
+          xelatex -synctex=1 -interaction=nonstopmode "\def\version{${{ steps.version.outputs.version }}} \input{cv_english.tex}"
+          xelatex -synctex=1 -interaction=nonstopmode "\def\version{${{ steps.version.outputs.version }}} \input{cv_german.tex}"
 
       - name: Setup GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

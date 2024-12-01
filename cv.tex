@@ -7,14 +7,26 @@
 \usepackage{hyperref}
 \usepackage{graphics}
 
+\newcommand{\version}{}
+\newcommand{\versionlink}{
+    \iflanguage{german}
+	    {
+	    	\href{https://huserben.github.io/cv/cv_german.pdf}{\version}
+	    }
+	    {
+	    	\href{https://huserben.github.io/cv/cv_english.pdf}{\version}
+	    }
+}
+
 \input{personalinfo.tex}
 
-\begin{document}
-	
+\begin{document}	
 	\makecvheader
 	
 	\makecvfooter
-	{\today}
+	{
+		 \versionlink
+	}
 	{
 		\iflanguage{german}{Benjamin Huser-Berta ~~~·~~~Lebenslauf}
 		{Benjamin Huser-Berta ~~~·~~~Curriculum Vitae}

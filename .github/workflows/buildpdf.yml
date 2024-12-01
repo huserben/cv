@@ -24,7 +24,7 @@ jobs:
         with:
           prefix: v
 
-      - name: Compile English version
+      - name: Compile PDFs
         run: |
           xelatex -synctex=1 -interaction=nonstopmode "\def\version{${{ steps.version.outputs.version }}} \input{cv_english.tex}"
           xelatex -synctex=1 -interaction=nonstopmode "\def\version{${{ steps.version.outputs.version }}} \input{cv_german.tex}"

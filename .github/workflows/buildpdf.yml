@@ -16,15 +16,11 @@ jobs:
       - name: Install TeX Live
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra texlive-fonts-extra
+          sudo apt-get install -y texlive-full
 
       - name: Compile English version
         run: |
-          xelatex -interaction=nonstopmode -jobname=english "\def\language{english} \input{cv.tex}"
-
-      - name: Compile German version
-        run: |
-          xelatex -interaction=nonstopmode -jobname=german "\def\language{german} \input{cv.tex}"
+          xelatex -synctex=1 -interaction=nonstopmode "cv.tex"
 
       - name: Setup GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -36,8 +32,7 @@ jobs:
       - name: Copy PDFs
         run: |
           mkdir -p output
-          mv english.pdf output/
-          mv german.pdf output/
+          mv cv.pdf output/
 
       - name: Deploy PDFs
         uses: peaceiris/actions-gh-pages@v3

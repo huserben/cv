@@ -1,11 +1,11 @@
 %-------------------------------------------------------------------------------
 %	SECTION TITLE
 %-------------------------------------------------------------------------------
-\langen{
-	\cvsection{About Me}
-}
-\langde{
+\iflanguage{german}{
 	\cvsection{Über Mich}
+}
+{
+	\cvsection{About Me}
 }
 
 
@@ -14,7 +14,9 @@
 %-------------------------------------------------------------------------------
 \begin{cvparagraph}
 
-\langen{
+\iflanguage{german}
+{}
+{
 	I am an experienced Agile Coach specializing in creating effective, efficient, and predictable systems, with a passion for any practice that can help teams and organizations achieve this, independent of frameworks and methods. I'll combine a deep theoretical understanding of various approaches with years of practical, hands-on experience in a corporate environment, where I worked both with teams and leadership.	
 	
 	With my background as a Software Engineer, I can not only empathize with developers, but also have the experience and know how to lead improvements when it comes to technical practices. Whether it's eXtreme Programming concepts or DevOps principles, I not only know about them, but have supported teams implementing and evolving them.
@@ -25,7 +27,4 @@
 	
 	Another passion of mine is automation, whether it's through scripts or CI pipelines - if it involves manual work and has to be done on a regular base, I'll sooner rather than later will find a way to automate the task so anyone involved can focus on more value adding work.
 }
-\langde
-	{ }
-
 \end{cvparagraph}

@@ -1,45 +1,7 @@
-\documentclass[11pt, a4paper]{awesome-cv}
-
-\usepackage[english,german]{babel}
-\usepackage{ifthen}
-
-% Default language is English
-\newboolean{isEnglish}
-\setboolean{isEnglish}{true}
-
-% Check if language is passed via command line
-\ifdefined\language
-\ifthenelse{\equal{\language}{german}}{
-	\setboolean{isEnglish}{false}
-}{}
-\fi
-
-% Language-specific commands
-\newcommand{\langde}[1]{%
-	\ifthenelse{\boolean{isEnglish}}{}{%
-		\selectlanguage{german}#1}}
-\newcommand{\langen}[1]{%
-	\ifthenelse{\boolean{isEnglish}}{\selectlanguage{english}#1}{}}
-
-% Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
-
-% Specify the location of the included fonts
 \fontdir[fonts/]
-
-% Color for highlights
 \definecolor{awesome}{HTML}{30574E}
-
-% Colors for text
-%\definecolor{darktext}{HTML}{30574E}
-%\definecolor{text}{HTML}{333333}
-%\definecolor{graytext}{HTML}{30574E}
-%\definecolor{lighttext}{HTML}{999999}
-
-% Set false if you don't want to highlight section with awesome color
 \setbool{acvSectionColorHighlight}{true}
-
-% If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 \usepackage{hyperref}
@@ -54,8 +16,8 @@
 	\makecvfooter
 	{\today}
 	{
-		\langen{Benjamin Huser-Berta ~~~·~~~Curriculum Vitae}
-		\langde{Benjamin Huser-Berta ~~~·~~~Lebenslauf}
+		\iflanguage{german}{Benjamin Huser-Berta ~~~·~~~Lebenslauf}
+		{Benjamin Huser-Berta ~~~·~~~Curriculum Vitae}
 	}
 	{\thepage}
 	

@@ -1,4 +1,5 @@
 # Summary
+![Build and Publish PDFs](https://github.com/huserben/cv/actions/workflows/buildpdf.yml/badge.svg)
 
 This repo contains my CV written in LaTeX using [Awesome-CV](https://github.com/posquit0/Awesome-CV).
 It's using GitHub Actions to compile the source files in to pdfs, and then pushing it to a gh-pages branch, which is published as page on GitHub and available to the general public.

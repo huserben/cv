@@ -14,3 +14,36 @@ The GitHub Action is triggered on any change to the main branch, is tagging the 
 
 ## German 🇩🇪
 [![Open PDF](https://img.shields.io/badge/Open%20PDF-EC1C24?style=flat&logo=adobeacrobatreader)](https://huserben.github.io/cv/cv_german.pdf)
+
+---
+
+## Run locally (Arch Linux + VS Code)
+
+Simple steps to build the PDFs on an Arch-based system using VS Code.
+
+Prerequisites:
+- Install TeX Live packages (enough to build these files):
+
+```bash
+sudo pacman -S texlive-bin texlive-latexrecommended texlive-latexextra texlive-fontsextra texlive-langgerman
+```
+
+- Install VS Code and the LaTeX Workshop extension (`James-Yu.latex-workshop`).
+
+Build (two ways):
+
+1) From VS Code
+- Open the repository in VS Code.
+- Use LaTeX Workshop build (the workspace provides a `xelatex` recipe that injects the version).
+
+2) From the terminal
+- Run (replace the date string with the desired version):
+
+```bash
+xelatex -synctex=1 -interaction=nonstopmode "\\def\\version{2025-12-27} \\input{cv_english.tex}"
+xelatex -synctex=1 -interaction=nonstopmode "\\def\\version{2025-12-27} \\input{cv_german.tex}"
+```
+
+- Run each command twice to clear hyperref / outline warnings.
+
+That's it — the generated PDFs (`cv_english.pdf` and `cv_german.pdf`) will be in the repository root.

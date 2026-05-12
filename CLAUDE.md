@@ -29,6 +29,16 @@ Because both PDFs share `cv.tex`, structural changes (section order, page breaks
 
 When editing CV prose, do not use em-dashes or en-dashes as clause separators (in LaTeX: `---` or `--`, or the literal `—` / `–` characters). They read as an LLM tell. Rephrase as two sentences, use a comma, or use a colon. Hyphens inside compound modifiers (`AI-augmented`, `data-informed`, `hands-on`, `Software-Engineering-Hintergrund`) are normal grammar and stay.
 
+## Job-hunt commands
+
+Three project-scoped slash commands live in `.claude/commands/`. They work as a pipeline:
+
+- **`/job-search`** — asks the user for preferences (location, work mode, schedule, target titles), persists them to `jobs/preferences.json`, queries Swiss job portals (jobs.ch, jobup.ch, swissdevjobs.ch, LinkedIn, indeed.ch, jobscout24.ch, stepstone.ch) via WebSearch/WebFetch, and writes a dated shortlist to `jobs/YYYY-MM-DD-search.md`. Preferences are loaded as defaults on the next run.
+- **`/job-inspector`** — reads the latest search file (or a path arg), scores each opportunity against the CV on four dimensions (role+tech fit, agile/lean culture, location/remote, seniority+comp; max 30), and writes a sorted, annotated shortlist to `jobs/YYYY-MM-DD-inspection.md`. Filters location-mismatch entries to a separate section.
+- **`/job-applicator`** — pick one opportunity from the inspection, creates an `apply/{company-role-date}` branch, drops `notes.md` / `cover-letter.md` / `interview-prep.md` into `jobs/applications/{slug}/`, walks the user through any CV tweaks suggested by the inspector, and rebuilds the PDFs. Does not auto-commit.
+
+The `jobs/` directory is gitignored — preferences, search results, inspections, and per-application notes stay local. Application-specific CV edits live on the `apply/{slug}` branch, not `main`.
+
 ## Release flow
 
 `.github/workflows/buildpdf.yml` runs on push to `main`: it creates a daily date-prefixed tag (`fregante/daily-version-action`), injects it as `\version`, compiles both PDFs with `xelatex`, and publishes them to the `gh-pages` branch (which serves `huserben.github.io/cv/cv_{english,german}.pdf`). PDFs are not committed to `main` — they're build artifacts produced per push.

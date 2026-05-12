@@ -40,3 +40,4 @@ _build/
 
 # Job search workspace (private)
 jobs/
+.playwright-mcp/*

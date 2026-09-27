@@ -13,21 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install TeX Live
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
-
       - name: Create tag if necessary
         id: version
         uses: fregante/daily-version-action@v2
         with:
           prefix: v
 
+      # Compile in the official TeX Live image so CI matches a current local
+      # install (Ubuntu's texlive-full lags years behind and paginates differently).
+      # Each file is compiled twice to resolve hyperref/outline references.
       - name: Compile PDFs
         run: |
-          xelatex -synctex=1 -interaction=nonstopmode "\def\version{${{ steps.version.outputs.version }}} \input{cv_english.tex}"
-          xelatex -synctex=1 -interaction=nonstopmode "\def\version{${{ steps.version.outputs.version }}} \input{cv_german.tex}"
+          docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD":/work -w /work texlive/texlive:latest sh -c '
+            for f in cv_english cv_german; do
+              for pass in 1 2; do
+                xelatex -synctex=1 -interaction=nonstopmode "\\def\\version{${{ steps.version.outputs.version }}} \\input{$f.tex}" || exit 1;
+              done;
+            done'
 
       - name: Setup GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

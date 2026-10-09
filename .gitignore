@@ -38,9 +38,11 @@ _build/
 *.lyx~
 *.lyx#
 
-# Job search workspace (private)
-jobs/
+# Job search workspace (private). Lives in the cv-prep repo, symlinked in by its bootstrap.sh
+jobs
+.claude/commands
 .playwright-mcp/*
 # nWave activation marker (keep .nwave/local-config.json trackable)
 .nwave/*
 !.nwave/local-config.json
+CLAUDE.local.md

@@ -29,15 +29,9 @@ Because both PDFs share `cv.tex`, structural changes (section order, page breaks
 
 When editing CV prose, do not use em-dashes or en-dashes as clause separators (in LaTeX: `---` or `--`, or the literal `—` / `–` characters). They read as an LLM tell. Rephrase as two sentences, use a comma, or use a colon. Hyphens inside compound modifiers (`AI-augmented`, `data-informed`, `hands-on`, `Software-Engineering-Hintergrund`) are normal grammar and stay.
 
-## Job-hunt commands
+## Private job-hunt tooling
 
-Three project-scoped slash commands live in `.claude/commands/`. They work as a pipeline:
-
-- **`/job-search`** — asks the user for preferences (location, work mode, schedule, target titles), persists them to `jobs/preferences.json`, and ingests opportunities through five channels: (S) user-supplied seed URLs from `jobs/seeds.txt` or `/job-search <url>` args, each seed gets full extraction plus a similar-roles expansion (same-company siblings + similar-title search); (A) verified XML feeds (currently `swissdevjobs.ch/job_feed.xml`); (B) any browser-automation MCP installed (Playwright, Puppeteer, Browserbase); (C) user-pasted HTML or text dropped into `jobs/raw/`; (D) WebSearch/WebFetch fallback across jobs.ch, jobup.ch, LinkedIn, indeed.ch, jobscout24.ch, stepstone.ch. Writes a dated shortlist to `jobs/YYYY-MM-DD-search.md`. Successfully extracted seeds are cut from `seeds.txt` to `seeds-processed.txt` with a date stamp; failed seeds get a `# FAILED YYYY-MM-DD: <reason>` marker and stay for the next run. Preferences and optional auth artifacts (`jobs/auth/` for MCP cookie jars) are loaded on the next run; no credentials are ever read from chat or repo files.
-- **`/job-inspector`** — reads the latest search file (or a path arg) and walks each opportunity one at a time. Scores on four dimensions (role+tech fit, agile/lean culture, location/remote, seniority+comp; max 30), surfaces any matching prior feedback, then asks for an Apply/Maybe/Skip verdict with optional comment. Appends every verdict to `jobs/feedback.jsonl` (append-only history) and regenerates `jobs/feedback-summary.md` with company-level and keyword-level patterns. Writes the bucketed shortlist to `jobs/YYYY-MM-DD-inspection.md`.
-- **`/job-applicator`** — pick one opportunity from the inspection, creates an `apply/{company-role-date}` branch, drops `notes.md` / `cover-letter.md` / `interview-prep.md` into `jobs/applications/{slug}/`, walks the user through any CV tweaks suggested by the inspector, and rebuilds the PDFs. Does not auto-commit.
-
-The `jobs/` directory is gitignored — preferences, search results, inspections, and per-application notes stay local. Application-specific CV edits live on the `apply/{slug}` branch, not `main`.
+Job-search commands, workspace (`jobs/`) and notes live in a separate private repo and are symlinked in (`jobs`, `.claude/commands`, `CLAUDE.local.md`), all gitignored. If `CLAUDE.local.md` is present, it holds the instructions. Never commit or push anything application-specific to this public repo.
 
 ## Release flow
 
